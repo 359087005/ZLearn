@@ -24,7 +24,6 @@ namespace ZTools
 
             Debug.Log("导出完成...");
             EditorUtility.DisplayDialog("title","资源在"+ exportPath+"路径下导出完毕.", "ok");
-
             AssetDatabase.Refresh();
         }
     }
