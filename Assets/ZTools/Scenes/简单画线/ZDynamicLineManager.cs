@@ -17,6 +17,8 @@ public class ZDynamicLineManager : MonoBehaviour
 
     public int smoothValue = 2;
     LineRenderer lineRenderer;
+
+    bool isDraw = true;
     void Start()
     {
         InitLineRenderer();
@@ -24,10 +26,7 @@ public class ZDynamicLineManager : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D))
-        {
             DynamicDrawLine();
-        }
     }
     /// <summary>
     /// 初始化线段
@@ -49,8 +48,12 @@ public class ZDynamicLineManager : MonoBehaviour
 
     void DynamicDrawLine()
     {
-        GetPoints();
-        StartCoroutine(MoveLine());
+        if (isDraw)
+        {
+            isDraw = false;
+            GetPoints();
+            StartCoroutine("MoveLine");
+        }
     }
 
     /// <summary>
@@ -68,6 +71,8 @@ public class ZDynamicLineManager : MonoBehaviour
             lineRenderer.SetPosition(i, tempVector3s[i]);
             yield return  wait;
         }
+
+        isDraw = true;
     }
     /// <summary>
     /// 根据Transform获取目标路径点

@@ -43,7 +43,7 @@ public class CommandTest : MonoBehaviour
         }
     }
     string oldname;
-    public InputField name;
+    public InputField inputFiledName;
     string oldpw;
     public InputField pw;
 
@@ -87,9 +87,9 @@ public class CommandTest : MonoBehaviour
     {
         cmdMgr = new CmdMgr();
 
-        name.onEndEdit.AddListener((string value) =>
+        inputFiledName.onEndEdit.AddListener((string value) =>
         {
-            cmdMgr.Execute(new InputCommand(name, value,oldname));
+            cmdMgr.Execute(new InputCommand(inputFiledName, value,oldname));
             oldname = value;
             Debug.Log(cmdMgr.backCommands.Count);
         });

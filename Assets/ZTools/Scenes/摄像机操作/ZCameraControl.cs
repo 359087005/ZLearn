@@ -17,12 +17,11 @@ public class ZCameraControl : MonoBehaviour
     private float xSpeed = 250.0f;
     private float ySpeed = 250.0f;//120
 
-    private bool isAnim;
+    //private bool isAnim;
 
-    private float x = 0.0f;
-    private float y = 0.0f;
-
-    bool controlFlag = false;
+    //private float x = 0.0f;
+    //private float y = 0.0f;
+    //bool controlFlag = false;
 
     //CreateUI pre;
 
@@ -37,8 +36,8 @@ public class ZCameraControl : MonoBehaviour
     void Start()
     {
         var angles = transform.eulerAngles;
-        x = angles.y;
-        y = angles.x;
+        //x = angles.y;
+        //y = angles.x;
     }
     //public Transform start, end, cameraPos;
 
@@ -60,8 +59,8 @@ public class ZCameraControl : MonoBehaviour
 
     void LateUpdate()
     {
-        if (isAnim)
-            return;
+        //if (isAnim)
+        //    return;
         if (isCanRot)
         {
             UpdateRotate();

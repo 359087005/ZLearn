@@ -295,6 +295,9 @@
     <Compile Include="Assets\ZTools\Scenes\命令模式undoRedoDemo\InputCommand.cs" />
     <Compile Include="Assets\ZTools\Scenes\命令模式undoRedoDemo\Player.cs" />
     <Compile Include="Assets\ZTools\Scenes\命令模式undoRedoDemo\PlayerCommand.cs" />
+    <Compile Include="Assets\ZTools\Scenes\摄像机操作\ZCameraControl.cs" />
+    <Compile Include="Assets\ZTools\Scenes\简单画线\ZDrawLine.cs" />
+    <Compile Include="Assets\ZTools\Scenes\简单画线\ZDynamicLineManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
