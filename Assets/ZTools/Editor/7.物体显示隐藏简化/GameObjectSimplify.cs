@@ -5,7 +5,7 @@ using UnityEditor;
 
 namespace ZTools
 {
-    public class GameObjectSimplify
+    public partial class GameObjectSimplify
     {
         public static void Show(GameObject go)
         {
@@ -15,26 +15,13 @@ namespace ZTools
         {
             go.SetActive(false);
         }
-    }
-
-    public class GameObjectActive
-    {
 #if UNITY_EDITOR
-        [MenuItem("ZTools/13.物体开关激活简化")]
+        [MenuItem("ZTools/7.物体开关激活简化", false, 7)]
 #endif
-        static void MenuClick13()
+        static void MenuClick7()
         {
             GameObject go = new GameObject();
             Hide(go);
-        }
-
-        public static void Show(GameObject go)
-        {
-            GameObjectSimplify.Show(go);
-        }
-        public static void Hide(GameObject go)
-        {
-            GameObjectSimplify.Hide(go);
         }
     }
 }

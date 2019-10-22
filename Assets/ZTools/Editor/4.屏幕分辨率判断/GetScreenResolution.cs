@@ -3,12 +3,12 @@
 using UnityEditor;
 #endif
 
-public class GetScreenResolution : MonoBehaviour
+public partial class GetScreenResolution 
 {
 #if UNITY_EDITOR
-    [MenuItem("ZTools/9.获取设备分辨率")]
+    [MenuItem("ZTools/4.获取设备分辨率",false,4)]
 #endif
-    static void MenuClick9()
+    static void MenuClick4()
     {
         Debug.Log(IsPadResolution() ? "是 Pad" : "不是 Pad");
         Debug.Log(IsPhoneResolution() ? "是 phone" : "不是 phone");

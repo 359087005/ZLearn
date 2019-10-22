@@ -7,27 +7,18 @@ using UnityEditor;
 
 namespace ZTools
 {
-    public class MathUtil
+    public partial class MathUtil
     {
         public static bool Percent(int percent)
         {
             return Random.Range(0, 100) <= percent;
         }
-    }
-
-    public class PercentFunc 
-    {
 #if UNITY_EDITOR
-        [MenuItem("ZTools/12.概率函数")]
+        [MenuItem("ZTools/6.概率函数", false, 6)]
 #endif
         static void MenuClick()
         {
-          Debug.Log(MathUtil.Percent(36));
-        }
-
-        public static bool Percent(int percent)
-        {
-            return Random.Range(0,100)<=percent;
+            Debug.Log(MathUtil.Percent(36));
         }
     }
 }

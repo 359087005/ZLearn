@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 namespace ZTools
 {
-    public class CommonUtil
+    public partial class CommonUtil
     {
         public static void CopyText(string copyText)
         {

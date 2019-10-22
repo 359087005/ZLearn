@@ -296,12 +296,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\ZTools\Editor\1.导出unityPackage\Exporter.cs" />
-    <Compile Include="Assets\ZTools\Editor\10.Transform简化\TransformSimplify.cs" />
-    <Compile Include="Assets\ZTools\Editor\12.概率函数\PercentFunc.cs" />
-    <Compile Include="Assets\ZTools\Editor\13.物体显示隐藏简化\GameObjectActive.cs" />
     <Compile Include="Assets\ZTools\Editor\2.复制文字到剪切板\CommonUtil.cs" />
     <Compile Include="Assets\ZTools\Editor\3.MenuItem复用\EditorUtil.cs" />
-    <Compile Include="Assets\ZTools\Editor\9.屏幕分辨率判断\GetScreenResolution.cs" />
+    <Compile Include="Assets\ZTools\Editor\4.屏幕分辨率判断\GetScreenResolution.cs" />
+    <Compile Include="Assets\ZTools\Editor\5.Transform简化\TransformSimplify.cs" />
+    <Compile Include="Assets\ZTools\Editor\6.概率函数\MathUtil.cs" />
+    <Compile Include="Assets\ZTools\Editor\7.物体显示隐藏简化\GameObjectSimplify.cs" />
+    <Compile Include="Assets\ZTools\Editor\8.Partial关键字\PartialKeyWord.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

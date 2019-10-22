@@ -8,7 +8,7 @@ using UnityEditor;
 
 namespace ZTools
 {
-    public class EditorUtil
+    public partial class EditorUtil
     {
         public static void OpenFolder(string folderPath)
         {
@@ -18,6 +18,12 @@ namespace ZTools
         public static void CallMenuItem(string menuName)
         {
             EditorApplication.ExecuteMenuItem(menuName);
+        }
+
+        public static void ExportPackage(string assetPathName, string fileName)
+        {
+            AssetDatabase.ExportPackage(assetPathName, fileName, ExportPackageOptions.Recurse);
+            AssetDatabase.Refresh();
         }
 
 #if UNITY_EDITOR

@@ -5,10 +5,10 @@ using UnityEditor;
 
 namespace ZTools
 {
-    public class TransformSimplify
+    public partial class TransformSimplify
     {
 #if UNITY_EDITOR
-        [MenuItem("ZTools/10.简化Transform设置")]
+        [MenuItem("ZTools/5.简化Transform设置",false,5)]
 #endif
         static void MenuClick()
         {
