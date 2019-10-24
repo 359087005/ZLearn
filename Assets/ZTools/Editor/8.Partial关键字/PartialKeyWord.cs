@@ -1,40 +1,30 @@
 ﻿using UnityEngine;
 
-
-
-
-public partial class TransformSimplify
+namespace ZTools
 {
-    public static void AddChild(Transform parent, Transform child)
-    {
-        child.SetParent(parent);
-    }
-}
 
-public partial class GameObjectSimplify
-{
-    public static void Show(Transform go)
+    public partial class TransformSimplify
     {
-        go.gameObject.SetActive(true);
+        public static void AddChild(Transform parent, Transform child)
+        {
+            child.SetParent(parent);
+        }
     }
-    public static void Hide(Transform go)
-    {
-        go.gameObject.SetActive(false);
-    }
-}
 
-public class PartialKeyWord 
-{
+    public class PartialKeyWord
+    {
 #if UNITY_EDITOR
-    [UnityEditor.MenuItem("ZTools/8.Partial关键字", false, 8)]
+        [UnityEditor.MenuItem("ZTools/8.Partial关键字", false, 8)]
 #endif
-    private static void MenuClick()
-    {
-        Transform p = new GameObject("P").transform;
-        Transform c = new GameObject("C").transform;
+        private static void MenuClick()
+        {
+            Transform p = new GameObject("P").transform;
+            Transform c = new GameObject("C").transform;
 
-        TransformSimplify.AddChild(p,c);
+            TransformSimplify.AddChild(p, c);
 
-        GameObjectSimplify.Hide(p);
+            GameObjectSimplify.Hide(p.gameObject);
+        }
     }
+
 }
