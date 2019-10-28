@@ -24,24 +24,12 @@ namespace ZTools
     {
         private void Awake()
         {
-            
-            
 
         }
-        string[] AllFile = new string[] {".pgn",".pga",".png",".pgn",".tag",".tga","jpg" };
+       
         private void Start()
         {
-            Debug.Log("Start");
-
-            string listTypes = "png|tga|jpg";
-            for (int i = 0; i < AllFile.Length; i++)
-            {
-                if (Regex.IsMatch(AllFile[i], listTypes)) //win平台路径
-                {
-                    Debug.Log("匹配成功");
-                }
-            }
-           
+          
         }
 
 #if UNITY_EDITOR
