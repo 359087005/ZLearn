@@ -36,5 +36,9 @@ namespace ZTools
             });
            
         }
+
+        protected override void BeforeDestroy()
+        {
+        }
     }
 }

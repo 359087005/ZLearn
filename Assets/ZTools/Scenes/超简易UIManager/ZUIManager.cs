@@ -19,7 +19,6 @@ namespace Buskit3D_CaiLiao
         private void Start()
         {
             //this.BuZhouTiShi("请选择实验内容");
-            StaticData.isCameraOperate = false;
             PushPanel("FirstPanel");
         }
         /// <summary>

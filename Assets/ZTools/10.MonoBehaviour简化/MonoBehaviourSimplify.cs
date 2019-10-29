@@ -40,6 +40,11 @@ namespace ZTools
             GameObject go = new GameObject();
             go.AddComponent<Hide>();
         }
+
+        protected override void BeforeDestroy()
+        {
+            
+        }
 #endif
     }
 }

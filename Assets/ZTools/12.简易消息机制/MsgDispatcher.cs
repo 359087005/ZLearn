@@ -10,16 +10,28 @@ namespace ZTools
 
         public static void Register(string msgName, Action<object> onMsgReceives)
         {
-            mRegisterMsgs.Add(msgName, onMsgReceives);
+            if (!mRegisterMsgs.ContainsKey(msgName))
+            {
+                mRegisterMsgs.Add(msgName, _=> { });
+            }
+            mRegisterMsgs[msgName] += onMsgReceives;
         }
 
-        public static void UnRegister(string msgName)
+        public static void UnRegisterAll(string msgName)
         {
             mRegisterMsgs.Remove(msgName);
+        }
+        public static void UnRegister(string msgName,Action<object> onMsgReceives)
+        {
+            if (mRegisterMsgs.ContainsKey(msgName))
+            {
+                mRegisterMsgs[msgName] -= onMsgReceives;
+            }
         }
 
         public static void Send(string msgName, object data)
         {
+            if(mRegisterMsgs.ContainsKey(msgName))
             mRegisterMsgs[msgName](data);
         }
 
@@ -28,16 +40,20 @@ namespace ZTools
 #endif
         static void MenuClick()
         {
-            Register("消息1", (data) =>
-             {
-                 Debug.LogFormat("消息:{0}", data);
-             });
+            UnRegisterAll("消息1");
+
+            Register("消息1", OnMsgReceived);
+            Register("消息1", OnMsgReceived);
 
             Send("消息1", "Hello World");
+            UnRegister("消息1", OnMsgReceived);
 
-            UnRegister("消息1");
 
-            Send("消息1", "Hello World");
+            Send("消息1", "Hello ");
+        }
+        static void OnMsgReceived(object data)
+        {
+            Debug.LogFormat("XXX:{0}",data);
         }
     }
 }

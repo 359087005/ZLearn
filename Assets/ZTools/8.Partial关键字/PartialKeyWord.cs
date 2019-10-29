@@ -2,8 +2,7 @@
 
 namespace ZTools
 {
-
-    public partial class TransformSimplify
+    public partial class TransformSimplify 
     {
         public static void AddChild(Transform parent, Transform child)
         {
