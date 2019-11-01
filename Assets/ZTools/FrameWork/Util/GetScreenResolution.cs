@@ -5,16 +5,6 @@ using UnityEditor;
 
 public partial class GetScreenResolution 
 {
-#if UNITY_EDITOR
-    [MenuItem("ZTools/4.获取设备分辨率",false,4)]
-#endif
-    static void MenuClick4()
-    {
-        Debug.Log(IsPadResolution() ? "是 Pad" : "不是 Pad");
-        Debug.Log(IsPhoneResolution() ? "是 phone" : "不是 phone");
-        Debug.Log(IsPhone4SResolution() ? "是 4s" : "不是 4s");
-        Debug.Log(IsiPhoneXRResolution() ? "是 XR" : "不是 XR");
-    }
 
     public static float GetAspect()
     {

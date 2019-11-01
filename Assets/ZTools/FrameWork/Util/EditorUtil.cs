@@ -14,7 +14,7 @@ namespace ZTools
         {
             Application.OpenURL("file:///" + folderPath);
         }
-
+#if UNITY_EDITOR
         public static void CallMenuItem(string menuName)
         {
             EditorApplication.ExecuteMenuItem(menuName);
@@ -24,13 +24,6 @@ namespace ZTools
         {
             AssetDatabase.ExportPackage(assetPathName, fileName, ExportPackageOptions.Recurse);
             AssetDatabase.Refresh();
-        }
-
-#if UNITY_EDITOR
-        [MenuItem("ZTools/3.MenuItem复用", false, 3)]
-        private static void MenuClick6()
-        {
-            CallMenuItem("2.复制文字到剪切板");
         }
 #endif
     }

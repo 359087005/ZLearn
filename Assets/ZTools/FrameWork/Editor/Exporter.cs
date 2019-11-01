@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using System;
-
-#if UNITY_EDITOR
 using UnityEditor;
-#endif
+
 namespace ZTools
 {
     public class Exporter
@@ -13,9 +11,8 @@ namespace ZTools
             return "ZTools" + DateTime.Now.ToString("yyyyMMdd_hh_mm");
         }
 
-#if UNITY_EDITOR
-        [MenuItem("ZTools/1.导出unityPackage %e", false, 1)]
-#endif
+        [MenuItem("ZTools/ZFrameEork/Editor/导出unityPackage %e", false, 1)]
+
         private static void ShortCut()
         {
             EditorUtil.ExportPackage("Assets/ZTools", GetFileName() + ".unitypackage");
