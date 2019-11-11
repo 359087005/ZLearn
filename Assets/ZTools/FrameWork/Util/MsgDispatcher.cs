@@ -12,7 +12,7 @@ namespace ZTools
         {
             if (!mRegisterMsgs.ContainsKey(msgName))
             {
-                mRegisterMsgs.Add(msgName, _=> { });
+                mRegisterMsgs.Add(msgName, _ => { });
             }
             mRegisterMsgs[msgName] += onMsgReceives;
         }
@@ -21,7 +21,7 @@ namespace ZTools
         {
             mRegisterMsgs.Remove(msgName);
         }
-        public static void UnRegister(string msgName,Action<object> onMsgReceives)
+        public static void UnRegister(string msgName, Action<object> onMsgReceives)
         {
             if (mRegisterMsgs.ContainsKey(msgName))
             {
@@ -31,29 +31,8 @@ namespace ZTools
 
         public static void Send(string msgName, object data)
         {
-            if(mRegisterMsgs.ContainsKey(msgName))
-            mRegisterMsgs[msgName](data);
-        }
-
-#if UNITY_EDITOR
-        [UnityEditor.MenuItem("ZTools/12.简易消息机制", false, 12)]
-#endif
-        static void MenuClick()
-        {
-            UnRegisterAll("消息1");
-
-            Register("消息1", OnMsgReceived);
-            Register("消息1", OnMsgReceived);
-
-            Send("消息1", "Hello World");
-            UnRegister("消息1", OnMsgReceived);
-
-
-            Send("消息1", "Hello ");
-        }
-        static void OnMsgReceived(object data)
-        {
-            Debug.LogFormat("XXX:{0}",data);
+            if (mRegisterMsgs.ContainsKey(msgName))
+                mRegisterMsgs[msgName](data);
         }
     }
 }

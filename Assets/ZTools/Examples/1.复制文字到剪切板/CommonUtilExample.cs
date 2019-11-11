@@ -2,7 +2,7 @@
 
 namespace ZTools
 {
-    public class CommonUtilExample : MonoBehaviour
+    public class CommonUtilExample 
     {
 #if UNITY_EDITOR
         [UnityEditor.MenuItem("ZTools/Example/复制文字到剪切板", false, 1)]

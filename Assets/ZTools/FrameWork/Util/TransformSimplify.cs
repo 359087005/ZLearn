@@ -7,19 +7,6 @@ namespace ZTools
 {
     public partial class TransformSimplify
     {
-#if UNITY_EDITOR
-        [MenuItem("ZTools/5.简化Transform设置",false,5)]
-#endif
-        static void MenuClick()
-        {
-            GameObject go = new GameObject();
-            SetLocalPosX(go.transform, 5.0f);
-            SetLocalPosY(go.transform, 5.0f);
-            SetLocalPosZ(go.transform, 5.0f);
-
-            TransformReset(go.transform);
-        }
-
         public static void TransformReset(Transform trans)
         {
             trans.localPosition = Vector3.zero;
@@ -62,6 +49,11 @@ namespace ZTools
             Vector3 localPos = trans.localPosition;
             localPos.y = y; localPos.z = z;
             trans.localPosition = localPos;
+        }
+
+        public static void AddChild(Transform parent, Transform child)
+        {
+            child.SetParent(parent);
         }
     }
 }

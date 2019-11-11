@@ -1,7 +1,4 @@
 ﻿using UnityEngine;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 namespace ZTools
 {
@@ -15,13 +12,13 @@ namespace ZTools
         {
             go.SetActive(false);
         }
-#if UNITY_EDITOR
-        [MenuItem("ZTools/7.物体开关激活简化", false, 7)]
-#endif
-        static void MenuClick7()
+        public static void Show(Transform go)
         {
-            GameObject go = new GameObject();
-            Hide(go);
+            go.gameObject.SetActive(true);
+        }
+        public static void Hide(Transform go)
+        {
+            go.gameObject.SetActive(false);
         }
     }
 }
