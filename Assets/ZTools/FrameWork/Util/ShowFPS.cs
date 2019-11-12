@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-namespace XuYiGame
+namespace ZTools
 {
     public class ShowFPS : MonoBehaviour
     {
