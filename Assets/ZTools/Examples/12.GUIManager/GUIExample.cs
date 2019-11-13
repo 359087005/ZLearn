@@ -8,13 +8,26 @@ namespace ZTools
 
         }
 
+#if UNITY_EDITOR
+        [UnityEditor.MenuItem("ZTools/Example/GUIManager", false, 11)]
+        static void MenuClick()
+        {
+            UnityEditor.EditorApplication.isPlaying = true;
+
+            new GameObject("GUIExample").AddComponent<GUIExample>();
+        }
+#endif
+
+
         private void Start()
         {
-          var panel =   GUIManager.LoadPanel("GamePanel");
+            GUIManager.SetResolution(1280,720,0);
+
+          var panel =   GUIManager.LoadPanel("HomePanel",UILayer.Common);
 
             Delay(3,()=>
             {
-                Destroy(panel);
+                GUIManager.UnLoadPanel("HomePanel");
             });
         }
     }
