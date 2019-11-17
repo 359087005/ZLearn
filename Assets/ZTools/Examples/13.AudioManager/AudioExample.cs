@@ -9,14 +9,14 @@ namespace ZTools
 
 #if UNITY_EDITOR
         [UnityEditor.MenuItem("ZTools/Example/AudioSource", false, 13)]
-#endif
+
         static void MenuClick()
         {
             UnityEditor.EditorApplication.isPlaying = true;
 
             new GameObject("AudioExample").AddComponent<AudioExample>();
         }
-
+#endif
         private void Start()
         {
             AudioManager.Instance.PlaySound("");

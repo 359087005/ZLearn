@@ -1,5 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ZTools
 {
@@ -7,7 +6,7 @@ namespace ZTools
     {
 
 #if UNITY_EDITOR
-        [MenuItem("ZTools/Example/获取设备分辨率", false, 3)]
+        [UnityEditor.MenuItem("ZTools/Example/获取设备分辨率", false, 3)]
 #endif
         static void MenuClick4()
         {

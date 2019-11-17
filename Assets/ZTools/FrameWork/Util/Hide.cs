@@ -6,12 +6,11 @@ namespace ZTools
     {
         protected override void BeforeDestroy()
         {
-            
         }
 
         private void Awake()
         {
-            Hide();
+           this. Hide();
         }
     }
 

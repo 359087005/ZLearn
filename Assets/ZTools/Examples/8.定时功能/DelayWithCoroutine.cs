@@ -19,7 +19,7 @@ namespace ZTools
         {
             Delay(5, () =>
              {
-                 Debug.Log("5秒之后"); Hide();
+                 Debug.Log("5秒之后"); this.Hide();
              });
 
         }

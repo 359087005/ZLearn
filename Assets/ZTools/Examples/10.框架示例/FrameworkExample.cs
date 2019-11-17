@@ -9,14 +9,14 @@ namespace ZTools
     {
 #if UNITY_EDITOR
         [UnityEditor.MenuItem("ZTools/Example/框架实例", false,10)]
-#endif
+
         private static void MenuClick()
         {
             UnityEditor.EditorApplication.isPlaying = true;
 
             new GameObject("Zhou").AddComponent<FrameworkExample>();
         }
-
+#endif
         private void Awake()
         {
             UnRegisterMsg("Do");

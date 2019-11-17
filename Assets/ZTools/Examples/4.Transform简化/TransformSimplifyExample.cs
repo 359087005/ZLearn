@@ -1,4 +1,6 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace ZTools
@@ -11,14 +13,15 @@ namespace ZTools
         static void MenuClick()
         {
             GameObject go = new GameObject();
-            TransformSimplify.SetLocalPosX(go.transform, 5.0f);
-            TransformSimplify.SetLocalPosY(go.transform, 5.0f);
-            TransformSimplify.SetLocalPosZ(go.transform, 5.0f);
-            TransformSimplify.TransformReset(go.transform);
+
+            go.transform.SetLocalPosX(5.0f);
+            go.transform.SetLocalPosY(5.0f);
+            go.transform.SetLocalPosZ(5.0f);
+            go.transform.TransformReset();
 
             Transform p = new GameObject("P").transform;
             Transform c = new GameObject("C").transform;
-            TransformSimplify.AddChild(p, c);
+            p.AddChild(c);
 
         }
     }

@@ -10,9 +10,8 @@ namespace ZTools
         static void MenuClick7()
         {
             GameObject go = new GameObject();
-            GameObjectSimplify.Hide(go);
-
-            GameObjectSimplify.Show(go.transform);
+            go.Hide();
+            go.Show();
         }
     }
 }
