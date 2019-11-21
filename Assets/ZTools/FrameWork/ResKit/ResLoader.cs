@@ -3,30 +3,45 @@ using UnityEngine;
 
 namespace ZTools
 {
-
+    /// <summary>
+    /// 记录脚本已经加载的资源
+    /// </summary>
     public class ResLoader
     {
-        public List<Object> mLoadAssets = new List<Object>();
+        public List<Res> mResRecord = new List<Res>();
 
-        public T LoadAsset<T>(string assetName) where T : Object
+        public T LoadSync<T>(string assetName) where T : Object
         {
-            var resultAsset = mLoadAssets.Find(loadAsset => loadAsset.name == assetName) as T;
-            if (resultAsset)
-                return resultAsset;
+            var res = mResRecord.Find(loadAsset => loadAsset.Name == assetName);
+            if (res != null)
+                return res.Asset as T;
 
-            resultAsset = Resources.Load<T>(assetName);
-            mLoadAssets.Add(resultAsset);
-            return resultAsset;
+             res = ResMgr.Instance.sharedLoadRes.Find(loadAssets => loadAssets.Name == assetName);
+            if (res!= null)
+            {
+                mResRecord.Add(res);
+                res.Retain();
+                return res.Asset as T;
+            }
+            res = new Res(assetName);
+
+            res.LoadSync();
+
+            res.Retain();
+
+            ResMgr.Instance.sharedLoadRes.Add(res);
+            mResRecord.Add(res);
+            return res.Asset as T;
         }
 
-        public void UnLoadAssets()
+        public void ReleaseAll()
         {
-            mLoadAssets.ForEach(loadedAssets =>
+            mResRecord.ForEach(loadedAssets =>
             {
-                Resources.UnloadAsset(loadedAssets);
+                loadedAssets.Release();
             });
 
-            mLoadAssets.Clear();
+            mResRecord.Clear();
         }
     }
 
