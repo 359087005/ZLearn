@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/ZTools/FrameWork/Manager/Home/Home.unity
+    guid: 927e203b07bb53c4d8c567f656aad22f
+  - enabled: 1
+    path: Assets/ZTools/FrameWork/Manager/Game/Game.unity
+    guid: 828c21518fc68c24482e9a2a2c19aa2d

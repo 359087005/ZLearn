@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System;
+#if UNITY_EDITOR
 using UnityEditor;
-
+#endif
 namespace ZTools
 {
     public class Exporter
@@ -10,7 +11,7 @@ namespace ZTools
         {
             return "ZTools" + DateTime.Now.ToString("yyyyMMdd_hh_mm");
         }
-
+#if UNITY_EDITOR
         [MenuItem("ZTools/ZFrameEork/Editor/导出unityPackage %e", false, 1)]
 
         private static void ShortCut()
@@ -20,5 +21,6 @@ namespace ZTools
             //EditorApplication.ExecuteMenuItem("ZTools/6.编辑器代码复用");
 
         }
+#endif
     }
 }

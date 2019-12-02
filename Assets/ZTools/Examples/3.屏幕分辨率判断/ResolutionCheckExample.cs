@@ -7,7 +7,7 @@ namespace ZTools
 
 #if UNITY_EDITOR
         [UnityEditor.MenuItem("ZTools/Example/获取设备分辨率", false, 3)]
-#endif
+
         static void MenuClick4()
         {
             Debug.Log(GetScreenResolution.IsPadResolution() ? "是 Pad" : "不是 Pad");
@@ -15,5 +15,6 @@ namespace ZTools
             Debug.Log(GetScreenResolution.IsPhone4SResolution() ? "是 4s" : "不是 4s");
             Debug.Log(GetScreenResolution.IsiPhoneXRResolution() ? "是 XR" : "不是 XR");
         }
+#endif
     }
 }

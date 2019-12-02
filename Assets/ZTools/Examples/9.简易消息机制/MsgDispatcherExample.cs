@@ -6,7 +6,7 @@ namespace ZTools
     {
 #if UNITY_EDITOR
         [UnityEditor.MenuItem("ZTools/Example/简易消息机制", false, 9)]
-#endif
+
         static void MenuClick()
         {
             MsgDispatcher.UnRegisterAll("消息1");
@@ -19,6 +19,7 @@ namespace ZTools
 
             MsgDispatcher.Send("消息1", "Hello ");
         }
+#endif
         static void OnMsgReceived(object data)
         {
             Debug.LogFormat("XXX:{0}", data);

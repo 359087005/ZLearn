@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace ZTools
 {
@@ -9,7 +11,7 @@ namespace ZTools
     {
         public Object Asset { get; private set; }
 
-        public string Name { get { return Asset.name; } }
+        public string Name { get; private set; }
 
         private string mAssetPath;
 
@@ -17,18 +19,39 @@ namespace ZTools
         public Res(string assetPath)
         {
             mAssetPath = assetPath;
+            Name = assetPath;
         }
 
         public bool LoadSync()
         {
             return Asset = Resources.Load(mAssetPath);
         }
+
+        public void LoadAsync(Action<Res> onLoaded)
+        {
+          var request =  Resources.LoadAsync(mAssetPath);
+
+            request.completed += (operation=>
+            {
+                Asset = request.asset;
+                onLoaded(this);
+            });
+        }
+
+
+
         protected override void OnZeroRef()
         {
-            Resources.UnloadAsset(Asset);
-
+            if (Asset is GameObject)
+            {
+                Asset = null;
+                Resources.UnloadUnusedAssets();
+            }
+            else
+            {
+                Resources.UnloadAsset(Asset);
+            }
             ResMgr.Instance.sharedLoadRes.Remove(this);
-
             Asset = null;
         }
     }

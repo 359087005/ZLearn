@@ -11,7 +11,6 @@ namespace ZTools
         }
 #if UNITY_EDITOR
         [UnityEditor.MenuItem("ZTools/Example/PoolManager", false, 14)]
-#endif
         static void MenuClick()
         {
             PoolManager<Fish> fishPool =  new PoolManager<Fish>(()=>new Fish(),null,100);
@@ -30,5 +29,6 @@ namespace ZTools
             }
             Debug.Log(fishPool.CurCount);
         }
+#endif
     }
 }

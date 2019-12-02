@@ -12,11 +12,12 @@ namespace ZTools
 
 #if UNITY_EDITOR
         [UnityEditor.MenuItem("ZTools/Example/SingletonExample", false, 15)]
-#endif
+
         static void MenuClick()
         {
             var initInstance = SingletonExample.Instance;
             initInstance = SingletonExample.Instance;
         }
+#endif
     }
 }

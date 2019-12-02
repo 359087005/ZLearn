@@ -9,7 +9,7 @@ namespace ZTools
     {
 #if UNITY_EDITOR
         [MenuItem("ZTools/Example/Transform API简化", false, 4)]
-#endif
+
         static void MenuClick()
         {
             GameObject go = new GameObject();
@@ -24,6 +24,7 @@ namespace ZTools
             p.AddChild(c);
 
         }
+#endif
     }
 
 }

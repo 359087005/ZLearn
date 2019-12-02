@@ -23,7 +23,7 @@ namespace ZTools
                 GUILayout.EndVertical();
             }
         }
-    }
 #endif
+    }
 }
 

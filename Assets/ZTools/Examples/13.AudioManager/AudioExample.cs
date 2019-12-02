@@ -5,8 +5,6 @@ namespace ZTools
 
     public class AudioExample : MonoBehaviour
     {
-
-
 #if UNITY_EDITOR
         [UnityEditor.MenuItem("ZTools/Example/AudioSource", false, 13)]
 

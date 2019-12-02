@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace ZTools
 {
@@ -10,28 +12,77 @@ namespace ZTools
     {
         public List<Res> mResRecord = new List<Res>();
 
+        private Res GetResFromRecord(string assetName)
+        {
+           return mResRecord.Find(loadAsset => loadAsset.Name == assetName);
+        }
+
+        private Res GetFromResMgr(string assetName)
+        {
+          return  ResMgr.Instance.sharedLoadRes.Find(loadAssets => loadAssets.Name == assetName);
+        }
+
+        private void Add2Record(Res resFromResMgr)
+        {
+            mResRecord.Add(resFromResMgr);
+            resFromResMgr.Retain();
+        }
+        private Res CreatRes(string assetName)
+        {
+            var res = new Res(assetName);
+            ResMgr.Instance.sharedLoadRes.Add(res);
+            Add2Record(res);
+
+            return res;
+        }
+
+        private Res GetOrCreatRes(string assetName)
+        {
+            var res = GetResFromRecord(assetName);
+            if (res != null) return res;
+
+            res = GetFromResMgr(assetName);
+            if (res != null) return res;
+
+            res = CreatRes(assetName);
+            return res;
+        }
+
+
+
+
+
         public T LoadSync<T>(string assetName) where T : Object
         {
-            var res = mResRecord.Find(loadAsset => loadAsset.Name == assetName);
+            var res = GetOrCreatRes(assetName);
             if (res != null)
-                return res.Asset as T;
-
-             res = ResMgr.Instance.sharedLoadRes.Find(loadAssets => loadAssets.Name == assetName);
-            if (res!= null)
             {
-                mResRecord.Add(res);
-                res.Retain();
                 return res.Asset as T;
             }
-            res = new Res(assetName);
+            //真正加载资源
+
+            res =  CreatRes(assetName);
 
             res.LoadSync();
 
-            res.Retain();
-
-            ResMgr.Instance.sharedLoadRes.Add(res);
-            mResRecord.Add(res);
             return res.Asset as T;
+        }
+
+        public void LoadAsync<T>(string assetName, Action<T> onLoaded) where T : Object
+        {
+            var res = GetOrCreatRes(assetName);
+            if (res != null)
+            {
+                onLoaded(res.Asset as T);
+                return;
+            }
+
+            //真正加载资源
+            res = CreatRes(assetName);
+            res.LoadAsync(loaderRes =>
+            {
+                onLoaded(res.Asset as T);
+            });
         }
 
         public void ReleaseAll()

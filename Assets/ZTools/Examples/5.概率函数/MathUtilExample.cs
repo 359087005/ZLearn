@@ -7,7 +7,7 @@ namespace ZTools
     {
 #if UNITY_EDITOR
         [UnityEditor.MenuItem("ZTools/Example/概率函数 和 随机函数", false, 5)]
-#endif
+
         static void MenuClick()
         {
             Debug.Log(MathUtil.Percent(36));
@@ -16,6 +16,7 @@ namespace ZTools
 
             Debug.Log(MathUtil.GetRandomValues("111", "ascfds"));
         }
-    }
 
+#endif
+    }
 }
